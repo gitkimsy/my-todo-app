@@ -1,36 +1,69 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>나의 할 일 목록</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 할 일 목록 (To-Do List)</title>
+    <!-- Google Font & FontAwesome Icon -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="app">
-    <h1>나의 할 일 목록</h1>
+    <!-- 메인 컨테이너 (최대 너비 500px 카드) -->
+    <main class="todo-card">
+        <!-- 앱 헤더 타이틀 & 개수 정보 -->
+        <header class="todo-header">
+            <h1 class="todo-title">📝 나의 할 일 목록</h1>
+            <div class="todo-stats">
+                <span>전체 <strong id="total-count">0</strong>개</span>
+                <span class="divider-dot">•</span>
+                <span>완료 <strong id="completed-count">0</strong>개</span>
+            </div>
+        </header>
 
-    <div class="input-area">
-      <input type="text" id="todo-input" placeholder="할 일을 입력하세요" />
-      <button id="add-btn">추가</button>
-    </div>
+        <!-- 할 일 입력 폼 영역 -->
+        <div class="todo-input-group">
+            <input type="text" id="todo-input" class="todo-input" placeholder="할 일을 입력하세요" autocomplete="off">
+            <button id="add-btn" class="add-btn">
+                <i class="fa-solid fa-plus"></i> 추가
+            </button>
+        </div>
 
-    <div class="filter-area" id="filter-area">
-      <button class="filter-btn active" data-filter="all">전체</button>
-      <button class="filter-btn" data-filter="active">진행중</button>
-      <button class="filter-btn" data-filter="completed">완료</button>
-    </div>
+        <!-- 필터 및 일괄 삭제 툴바 영역 -->
+        <div class="todo-toolbar">
+            <div class="filter-group" id="filter-group">
+                <button class="filter-btn active" data-filter="all">전체</button>
+                <button class="filter-btn" data-filter="active">진행중</button>
+                <button class="filter-btn" data-filter="completed">완료</button>
+            </div>
+            <button id="clear-completed-btn" class="clear-completed-btn">
+                <i class="fa-solid fa-broom"></i> 완료 항목 삭제
+            </button>
+        </div>
 
-    <ul class="todo-list" id="todo-list">
-      <!-- 할 일 항목은 비어 있습니다 -->
-    </ul>
+        <!-- 할 일 목록 영역 (비어있는 상태) -->
+        <ul id="todo-list" class="todo-list">
+            <!-- 
+                자바스크립트로 동적 추가될 목록 아이템 예시 구조:
+                <li class="todo-item completed">
+                    <input type="checkbox" class="todo-checkbox" checked>
+                    <span class="todo-text">완료된 항목 예시</span>
+                    <button class="delete-btn"><i class="fa-solid fa-trash"></i></button>
+                </li>
+            -->
+        </ul>
 
-    <div class="todo-footer">
-      <div class="todo-summary" id="todo-summary">전체 0개 · 완료 0개</div>
-      <button id="clear-completed-btn">완료된 항목 삭제</button>
-    </div>
-  </div>
+        <!-- 빈 목록 시 안내 표시 메세지 -->
+        <div id="empty-state" class="empty-state">
+            <i class="fa-regular fa-clipboard"></i>
+            <p>등록된 할 일이 없습니다.</p>
+        </div>
+    </main>
 
-  <script src="main.js"></script>
+    <!-- 메인 스크립트 연결 -->
+    <script src="main.js"></script>
 </body>
 </html>
